@@ -1,18 +1,6 @@
-import tkinter as tk
-
-root = tk.Tk()
-
-margin = 0.23
-
-entry = tk.Entry(root)
-
-entry.pack()
-
-def profit_calculator():
-    profit = margin * int(entry.get())
-    print(profit)
-
-button_calc = tk.Button(root, text="Calculate", command=profit_calculator)
-button_calc.pack()
-
-root.mainloop()
+from tkinter import *
+widget = Button(text='Spam', padx=10, pady=10)
+widget.pack(padx=20, pady=20)
+widget.config(bg='dark green', fg='white')
+widget.config(font=('helvetica', 20, 'underline italic'))
+mainloop()
