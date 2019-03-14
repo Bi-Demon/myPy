@@ -1,4 +1,4 @@
-import Server.Server as sv
+import Model.Server.Server as sv
 import re
 
 class admin:

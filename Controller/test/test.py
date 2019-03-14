@@ -1,6 +1,6 @@
-from tkinter import *
-widget = Button(text='Spam', padx=10, pady=10)
-widget.pack(padx=20, pady=20)
-widget.config(bg='dark green', fg='white')
-widget.config(font=('helvetica', 20, 'underline italic'))
-mainloop()
+from tkinter import ttk  # Normal Tkinter.* widgets are not themed!
+from ttkthemes import ThemedTk
+
+window = ThemedTk(theme="equilux")
+ttk.Button(window,text="Quit",command=window.destroy).pack()
+window.mainloop()
