@@ -1,8 +1,9 @@
 # from tkinter import Frame, Tk, Canvas, LEFT, BOTH, TOP, BOTTOM, RIGHT, CENTER,RAISED
-from tkinter.ttk import Frame, Label, Entry, Style, Button
+from tkinter.ttk import Frame, Label, Entry, Style, Button, Combobox
 from tkinter.font import Font
 from ttkthemes import ThemedTk
 
+from tkinter import scrolledtext
 from tkinter import *
 
 class mainbox(Frame):
@@ -34,7 +35,7 @@ class signinbox(Frame):
 
     def loginwindow(self):
 
-        window= ThemedTk(theme='equilux')
+        window= ThemedTk(theme='auqa')
         window.title('Login')
         window.geometry('640x350')
 
@@ -72,7 +73,7 @@ class signupbox(Frame):
         self.signupwindow()
 
     def signupwindow(self):
-        window= ThemedTk(theme='equilux')
+        window= ThemedTk(theme='auqa')
         window.title('Sign Up')
         window.geometry('720x800')
 
@@ -80,25 +81,131 @@ class signupbox(Frame):
 
         labelfont= Font(family='Consolas', size= 14, weight='bold')
 
-        firstname= self.creatlabel(window, 'FirstName*', labelfont, 0,0)
-        entryfirstname= self.createntry(window, 0,1)
+        # entry.grid(row, column, rowspan, columnspan, ipadx, ipady)
 
-        lastname= self.creatlabel(window, 'LastName*', labelfont,0,3)
-        entrylastname= self.createntry(window,0,4)
+        label1=Label(window,
+                    height='2',
+                    width='10',
+                    text='First Name*', 
+                    font= labelfont)
+
+        label1.grid(row=0, column=0, stick= W)
+        
+        firstname=Entry(window)
+        firstname.grid(row=0, column=1, ipady= 10, ipadx= 40)
+
+        lable2=Label(window,
+                    height='2',
+                    width='10',
+                    text='Last Name*', 
+                    font= labelfont)
+
+        lable2.grid(row=0, column=3)
+
+        lastname= Entry(window)
+        lastname.grid(row=0, column= 4, ipady= 10, ipadx= 40)
+
+        lable3=Label(window,
+                    height='2',
+                    width='10',
+                    text='Email*', 
+                    font= labelfont)
+
+        lable3.grid(row=2, column=0)
+
+        email= Entry(window)
+        email.grid(row=2, column=1,ipady=10, ipadx= 40)
+
+        lable4=Label(window,
+                    height='2',
+                    width='10',
+                    text='PassWord*', 
+                    font= labelfont)
+
+        lable4.grid(row=2, column=3)
+
+        password= Entry(window)
+        password.grid(row=2, column=4,ipady=10, ipadx= 40)
+
+        lable5=Label(window,
+                    height='2',
+                    width='10',
+                    text='Address*', 
+                    font= labelfont)
+
+        lable5.grid(row=4, column=0)
+
+        address= scrolledtext.ScrolledText(window, height= 10, width= 40)
+        address.grid(row=4, column= 1, columnspan= 3)
+
+        lable6=Label(window,
+                    height='2',
+                    width='10',
+                    text='Phone*', 
+                    font= labelfont)
+
+        lable6.grid(row=6, column=0)
+
+        phone= Entry(window)
+        phone.grid(row=6, column=1,ipady=10, ipadx= 40)
+
+        lable7=Label(window,
+                    height='2',
+                    width='10',
+                    text='Sex*', 
+                    font= labelfont)
+
+        lable7.grid(row=6, column=3)
+
+        Sexcombo= Combobox(window, state='readonly',value= ['Male','Female','Other'])
+        Sexcombo.grid(row=6, column=4)
+
+        Sexcombo.current(1)
+        Sexcombo.bind('<<ComboboxSelected>>', lambda e:self.callbackSexFunc())
+
+        
+    
 
 
+        Label(window, height='2', width='5',font= labelfont, bg='light grey').grid(row=0, column=2)
+        
+        Label(window, height='2', width='5',font= labelfont, bg='light grey').grid(row=1, column=0)
 
-    def creatlabel(self,window, textname, fontype, x, y):
-        name= Label(window,text= textname,font= fontype, bg='light grey')
-        name.grid(row=x, column= y)
+        Label(window, height='2', width='5',font= labelfont, bg='light grey').grid(row=2, column=2)
 
-        return name
+        Label(window, height='2', width='5',font= labelfont, bg='light grey').grid(row=3, column=0)
 
-    def createntry(self, window,x,y):
-        name= Entry(window)
-        name.grid(row= x, column= y)
+        Label(window, height='2', width='5',font= labelfont, bg='light grey').grid(row=5, column=0)
 
-        return name
+        Label(window, height='2', width='5',font= labelfont, bg='light grey').grid(row=6, column=2)
+
+    def callbackSexFunc(self):
+        print("New Sex Selected")
+
+        # Label(window, text='Last Name*', font= labelfont).place(x=40, y=0)
+        # lastname= Entry(window)
+        # lastname.place(x=41, y=0)
+    #     firstname= self.creatlabel(window, 'FirstName*', labelfont, 0,0,5,1,0,0)
+    #     entryfirstname= self.createntry(window, 0,1,5,5,10,0)
+
+    #     lastname= self.creatlabel(window, 'LastName*', labelfont,0,8,5,1,0,0)
+    #     entrylastname= self.createntry(window,0,9,2,5,10,0)
+
+    #     email= self.creatlabel(window,'Email', labelfont, 6,0,5,1,0,0)
+    #     entryemail= self.createntry(window,6,1,2,3,30,2)
+
+
+    # def creatlabel(self,window, textname, fontype, x, y, spanx, spany, px, py):
+    #     name= Label(window,text= textname,font= fontype, bg='light grey')
+    #     name.grid(row=x, column= y, rowspan= spanx, columnspan= spany, ipadx= px, ipady= py)
+
+    #     return name
+
+    # def createntry(self, window,x, y, spanx, spany, px, py):
+    #     name= Entry(window)
+    #     name.grid(row= x, column= y,rowspan= spanx, columnspan= spany, ipadx= px, ipady= py)
+
+    #     return name
 
 
 
