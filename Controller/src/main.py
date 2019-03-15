@@ -22,8 +22,13 @@
 
 #             break 
 
-from View.menu.mainbox import *
-from View.menu.buttonbox import *
+# from View.menu.mainbox import *
+from Controller.control import *
+
+root= Tk()
+root.geometry('640x350+600+300')
+app= mainButton(root)
+root.mainloop()
 
 
 

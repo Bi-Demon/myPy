@@ -1,9 +1,11 @@
-# from tkinter import Frame, Tk, Canvas, LEFT, BOTH, TOP, BOTTOM, RIGHT, CENTER,RAISED
-from tkinter.ttk import Frame, Label, Entry, Style, Button, Combobox
+# from tkinter import Canvas,BOTH, W, RAISED
+# from tkinter.ttk import Frame, Label, Entry, Style, Button, Combobox
+
 from tkinter.font import Font
 from ttkthemes import ThemedTk
-
 from tkinter import scrolledtext
+
+from tkinter.ttk import*
 from tkinter import *
 
 class mainbox(Frame):
@@ -13,7 +15,7 @@ class mainbox(Frame):
         self.parent= parent
         self.form()
 
-    # Tạo form Quản Lý Sinh Viên
+    #----Tạo form Quản Lý Sinh Viên------------------------------------
     def form(self):
         self.parent.title('STUDENT MANAGEMENT')
         self.pack(fill= BOTH, expand= True)
@@ -25,7 +27,7 @@ class mainbox(Frame):
         betweenline.create_line(320, 70, 320, 300)
         betweenline.pack(fill= BOTH, expand= 1)
 
-# cho đăng nhập
+#-----------cho đăng nhập---------------------------------------------------
 class signinbox(Frame):
     def __init__(self, parent):
         Frame.__init__(self, parent)
@@ -49,22 +51,21 @@ class signinbox(Frame):
         entryuser= Entry(window)
         entryuser.pack(ipadx=60,ipady=5, pady= 50)
 
+
         labelpass= Label(window,text='Password', font= labelfont, bg='light grey')
         labelpass.place(x=90, y=170)
 
         entrypassword= Entry(window)
         entrypassword.pack(ipadx=60, ipady=5, pady=40)
 
-        loginwinButton= ttk.Button(window, text='Log In', command= lambda:self.getuser(entryuser.get(), entrypassword.get()))
-        loginwinButton.pack(ipadx=30, ipady=10, pady= 30) 
+        self.username= entryuser
+        self.password= entrypassword
+        self.window= window
+        # loginwinButton= ttk.Button(window, text='Log In', command= lambda:getuser(entryuser.get(), entrypassword.get()))
+        # loginwinButton.pack(ipadx=30, ipady=10, pady= 30) 
 
-    def getuser(self, username, password):
-        self.user= username
-        self.password= password
-
-        print(self.user, self.password)
-
-# cho đăng ký
+    
+# --------cho đăng ký-------------------------------------------------------
 class signupbox(Frame):
     def __init__(self, parent):
         Frame.__init__(self, parent)
