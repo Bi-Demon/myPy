@@ -1,13 +1,21 @@
-# from View.menu.mainbox import signupbox, signinbox, mainbox
-# from View.menu.buttonbox import loginButton, mainButton
+from View.menu.Button import *
 
-from View.menu.buttonbox import *
+# ----log in box----------------------------
+def makelogin():
+    doing= Tk()
+    doing.geometry('640x350+150+90')
 
-def makelogin(command):
-    loginButton(command)
-
-def makesignup(command):
-    signupbox(command)
+    loginButton(doing)
 
 def getuser(username, password):
     print(username, password)
+
+# --------sign up box------------------------
+def makesignup():
+    doing= Tk()
+    doing.geometry('720x800')
+
+    signupView(doing)
+
+
+    
